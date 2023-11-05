@@ -1,0 +1,172 @@
+/* Centraliza todo o conteudo no inicio da página */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilização do background */
+body{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(
+        90deg,  
+        #a83232  0%,
+        #326da8 100%)  ;
+}
+
+/* Centralizando o esqueleto do jogo */
+.board{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3,auto);
+}
+
+/* Sombra do circulo e X ao passar o mouse em cima de um espaço em branco  */
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    background: rgb(255,255, 255, 0.3)!important;
+}
+
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    background: rgb(255,255, 255, 0.3)!important;
+}
+
+/* Celulas */
+
+/* Criação do esqueleto do jogo da velha */
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 2px solid wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative
+}
+
+/* Remoção das bordas laterais */
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom: none;
+}
+
+/* Bloqueia o cursor para campos ja utilizados no jogo */
+.cell.x, .cell.circle{
+    cursor: not-allowed;
+}
+
+/* X */
+
+/* Criação e customização do X utilizado no jogo */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    content: "";
+    height: calc(100px * 0.15);
+    width: calc(100px*0.9);
+    background: white;
+    position: absolute;
+    /* border-radius: 50%; */
+    /* border: 3px solid;
+    border-color: #a83232; */
+}
+
+/* Rotação das astes do X */
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after{
+    transform: rotate(-45deg);
+}
+
+/* O */
+
+/* Criação e customização do circulo utilizado no jogo */
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: calc(100px * 0.8);
+    width: calc(100px*0.8);
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: #326da8;
+}
+
+
+/* Mensagens */
+
+/* Centralização da mensagem na tela e à pondo em cima dos demais elementos */
+.winning-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000009f;
+    flex-direction: column;
+}
+
+/* Customização do botão */
+.winning-message-button{
+    font-size: 2.5rem;
+    background-color: #a83232;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px;
+    color: #326da8;
+}
+
+/* Customização do botão ao passar o mouse em cima */
+.winning-message-button:hover {
+    background-color: #326da8;  
+    color: #a83232
+    ;
+}
+
+/* Customização do texto de vitória */
+.winning-message-text{
+    color: white;
+    font-size: 5rem;
+}
+
+.mostrar-mensagem-de-vitoria{
+    display: flex;
+}

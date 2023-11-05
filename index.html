@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="board" data-board>
+        <!-- Classe "cell" esta sendo utilizada para referenciar no css enquanto o "data-cell" esta sendo utilizado no javascript -->
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+
+    <!-- Div utilizada para mensagem de vitória após partida -->
+    <div class="winning-message" data-mensagem-vitoria>
+        <p class="winning-message-text" data-mensagem-vitoria-texto></p>
+        <button class="winning-message-button" botao-reiniciar>Reiniciar!</button>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>
